@@ -1,0 +1,15 @@
+name: Issue Tracker
+
+on:
+  issues:
+    types: [labeled]
+
+jobs:
+  log-label-change:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Log label event
+        run: |
+          echo "Issue: #${{ github.event.issue.number }}"
+          echo "Title: ${{ github.event.issue.title }}"
+          echo "Label added: ${{ github.event.label.name }}"
